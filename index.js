@@ -18,4 +18,4 @@ button1.addEventListener('click', changeHeading);
 button2.addEventListener('click', changeSecondHeading);
 
 
-//remarks document.querySelector() if id then use '#' if class then use '.'
+//REMARKS: document.querySelector() if id then use '#' if class then use '.'
