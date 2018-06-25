@@ -17,5 +17,18 @@ const changeSecondHeading = function() {
 button1.addEventListener('click', changeHeading);
 button2.addEventListener('click', changeSecondHeading);
 
+//Forms
+//return false to prevent refreshing after pressing submit
+function validateForm() {
+    const formsInput = document.forms["myForm"]["title"].value;
+    if (formsInput == "") {
+        alert("Input box must be filled out");
+        return false;
+    } else {
+        const changeHeaderForm = document.querySelector('h1');
+        changeHeaderForm.textContent = formsInput;
+        return false;
+    }
+}
 
 //REMARKS: document.querySelector() if id then use '#' if class then use '.'
