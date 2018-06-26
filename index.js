@@ -23,6 +23,7 @@ const form = document.querySelector('form#flickForm')
 const addFlickToList = function(ev) {
     ev.preventDefault()
     const f = ev.target
+
     if(f.flickName.value == '' || f.flickYear.value == ''){
         alert('Please Do Not Leave Input Field Empty!')
     } else {
@@ -40,10 +41,6 @@ const addFlickToList = function(ev) {
     f.reset()
 }
 
-const createListItem = function(){
-    
-}
-
-form.addEventListener('submit', changeHeading)
+form.addEventListener('submit', addFlickToList)
 
 //REMARKS: document.querySelector() if id then use '#' if class then use '.'
