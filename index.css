@@ -1,6 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway|Shrikhand');
+@import url('https://fonts.googleapis.com/css?family=Raleway|Shrikhand|Pacifico');
 
+h1 {
+    font-family: 'Pacifico', 'cursive';
+}
 body {
     font-family: Helvetica, Arial, sans-serif;
+    background: coral;
 }
+ul { display:table; margin:0 auto;}
 
