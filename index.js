@@ -1,34 +1,17 @@
-//1st button to change 1st heading
-//2nd button to change 2nd heading
-const button1 = document.querySelector('#button1');
-const button2 = document.querySelector('#button2');
+const form = document.querySelector('form#flickForm')
 
-// to change the heading after pressing button
-function changeHeading() {
-    const changeHeading = document.querySelector('h1');
-    changeHeading.textContent = 'A new Heading!!';
+const changeHeading = function(ev) {
+  ev.preventDefault()
+  const f = ev.target
+
+  const flickName = f.flickName.value
+  const item = document.createElement('li')
+  item.textContent = flickName
+
+  const list = document.querySelector('#flicks')
+  list.appendChild(item)
+
+  f.reset()
 }
 
-const changeSecondHeading = function() {
-    const changeSecondHeading = document.querySelector('#head2');
-    changeSecondHeading.textContent = 'I am finally free!!';
-}
-
-button1.addEventListener('click', changeHeading);
-button2.addEventListener('click', changeSecondHeading);
-
-//Forms
-//return false to prevent refreshing after pressing submit
-function validateForm() {
-    const formsInput = document.forms["myForm"]["title"].value;
-    if (formsInput == "") {
-        alert("Input box must be filled out");
-        return false;
-    } else {
-        const changeHeaderForm = document.querySelector('h1');
-        changeHeaderForm.textContent = formsInput;
-        return false;
-    }
-}
-
-//REMARKS: document.querySelector() if id then use '#' if class then use '.'
+form.addEventListener('submit', changeHeading)

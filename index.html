@@ -8,23 +8,20 @@
   <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
 </head>
 <body>
-  <h1>Chrissmess</h1>
+  <h1>Chrismess</h1>
 
-  <h1 id="head2">A second header that you need to change!</h1>
+  <form id="flickForm">
+    <input
+      type="text"
+      name="flickName"
+      placeholder="Enter a flick"
+      autofocus
+    >
+    <button type="submit">Update Heading</button>
+  </form>
 
-  <h1>Might wanna change the second heading</h1>
-
-  <button id="button1">Change 1st Heading</button>
-
-  <button id="button2">Change 2nd Heading</button>
+  <ul id="flicks"></ul>
 
   <script src="index.js"></script>
-
-<br></br>
-  <form name="myForm" action="index.html" onsubmit="return validateForm()" method="post">
-    Change Title: <input type="text" name="title" id="id-titleBox">
-    <input type="submit" value="Submit">
-</form>
-
 </body>
 </html>
