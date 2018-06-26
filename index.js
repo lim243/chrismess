@@ -20,16 +20,21 @@ button2.addEventListener('click', changeSecondHeading);
 //Forms
 const form = document.querySelector('form#flickForm')
 
-const changeHeading = function(ev) {
+const addFlickToList = function(ev) {
     ev.preventDefault()
     const f = ev.target
-    if(f.flickName.value == ''){
-        alert('Please Do Not Leave Input Field Empty!');
+    if(f.flickName.value == '' || f.flickYear.value == ''){
+        alert('Please Do Not Leave Input Field Empty!')
     } else {
+        const flickYear = f.flickYear.value
         const flickName = f.flickName.value
+
         const item = document.createElement('li')
-        item.textContent = flickName
+
+        item.textContent = flickName + ' ' + flickYear
+
         const list = document.querySelector('#flicks')
+
         list.appendChild(item)
     }
     f.reset()
