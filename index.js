@@ -11,16 +11,14 @@ const addFlickToList = function(ev) {
         const flickName = f.flickName.value
 
         const item = document.createElement('li')
-        let sFlickName = document.createElement('span')
-        let sFlickYear = document.createElement('span')
 
+        let sFlickName = document.createElement('span')
         sFlickName.setAttribute('class', 'flickName')
         sFlickName.textContent = flickName + ' '
-        sFlickName.style.fontFamily = 'Raleway'
-
+        
+        let sFlickYear = document.createElement('span')
         sFlickYear.setAttribute('class', 'flickYear')
         sFlickYear.textContent = flickYear
-        sFlickYear.style.fontFamily = 'Shrikhand'
 
         item.appendChild(sFlickName)
         item.appendChild(sFlickYear)

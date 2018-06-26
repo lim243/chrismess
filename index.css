@@ -7,5 +7,15 @@ body {
     font-family: Helvetica, Arial, sans-serif;
     background: coral;
 }
+
 ul { display:table; margin:0 auto;}
+
+.flickName {
+    font-family: 'Shrikhand';
+    font-stretch: extra-condensed;
+}
+
+.flickYear {
+    font-family: 'Raleway';
+}
 
