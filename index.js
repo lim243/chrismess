@@ -21,17 +21,22 @@ button2.addEventListener('click', changeSecondHeading);
 const form = document.querySelector('form#flickForm')
 
 const changeHeading = function(ev) {
-  ev.preventDefault()
-  const f = ev.target
+    ev.preventDefault()
+    const f = ev.target
+    if(f.flickName.value == ''){
+        alert('Please Do Not Leave Input Field Empty!');
+    } else {
+        const flickName = f.flickName.value
+        const item = document.createElement('li')
+        item.textContent = flickName
+        const list = document.querySelector('#flicks')
+        list.appendChild(item)
+    }
+    f.reset()
+}
 
-  const flickName = f.flickName.value
-  const item = document.createElement('li')
-  item.textContent = flickName
-
-  const list = document.querySelector('#flicks')
-  list.appendChild(item)
-
-  f.reset()
+const createListItem = function(){
+    
 }
 
 form.addEventListener('submit', changeHeading)
