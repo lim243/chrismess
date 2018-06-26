@@ -31,8 +31,18 @@ const addFlickToList = function(ev) {
         const flickName = f.flickName.value
 
         const item = document.createElement('li')
+        let sFlickName = document.createElement('span')
+        let sFlickYear = document.createElement('span')
 
-        item.textContent = flickName + ' ' + flickYear
+        sFlickName.setAttribute('class', 'flickName')
+        sFlickName.textContent = flickName + ' '
+
+        sFlickYear.setAttribute('class', 'flickYear')
+        sFlickYear.textContent = flickYear
+
+        item.appendChild(sFlickName)
+        item.appendChild(sFlickYear)
+        debugger
 
         const list = document.querySelector('#flicks')
 
