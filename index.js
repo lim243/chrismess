@@ -16,9 +16,11 @@ const addFlickToList = function(ev) {
 
         sFlickName.setAttribute('class', 'flickName')
         sFlickName.textContent = flickName + ' '
+        sFlickName.style.fontFamily = 'Raleway'
 
         sFlickYear.setAttribute('class', 'flickYear')
         sFlickYear.textContent = flickYear
+        sFlickYear.style.fontFamily = 'Shrikhand'
 
         item.appendChild(sFlickName)
         item.appendChild(sFlickYear)
