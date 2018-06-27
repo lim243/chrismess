@@ -19,6 +19,14 @@ const addFlickToList = function(ev) {
     f.reset()
 }
 
+//create a span
+const renderProperty = function(name, value){
+    const span = document.createElement('span')
+    span.classList.add(name)
+    span.textContent = value
+    return span
+}
+
 function addFlickYearToItemList(f,item){
     const flickYear = f.flickYear.value;
     let sFlickYear = document.createElement('span')
