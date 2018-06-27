@@ -1,3 +1,4 @@
+const flicksArray = []
 
 class App{
     constructor(){
@@ -9,11 +10,15 @@ class App{
     }
 
     //create a span
-    renderProperty(name, value){
+    renderSpan(name, value){
         const span = document.createElement('span')
         span.classList.add(name)
         span.textContent = value
         return span
+    }
+
+    renderArray(name, year){
+        flicksArray.push(`${name}: ${year}`)
     }
 
     renderItem(flick){
@@ -25,13 +30,16 @@ class App{
         const properties = Object.keys(flick);
     
         //loops through the whole object and append it to item list
-        properties.forEach((propertyName) => {
+        properties.forEach( (propertyName) => {
             //creates a span
-            const span = this.renderProperty(propertyName, flick[propertyName])
-            item.appendChild(span);
+            const span = this.renderSpan(propertyName, flick[propertyName])
+            item.appendChild(span)
+            // const itemArr = this.renderArray(flick[propertyName],)
         })
         return item
     }
+
+    // renderArray()
 
     handleSubmit(ev) {
         const f = ev.target
@@ -39,13 +47,16 @@ class App{
         //flick Object
         const flick = {
             name: f.flickName.value,
-            year: f.flickYear.value,
+            year: ` (${f.flickYear.value})`,
         }
         const item = this.renderItem(flick)
     
         const list = document.querySelector('#flicks')
     
         list.appendChild(item)
+
+        this.renderArray(flick.name, flick.year)
+        // console.log(flicksArray)
     
         f.reset()
     }
