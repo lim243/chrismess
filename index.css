@@ -2,12 +2,38 @@
 
 h1 {
     font-family: 'Pacifico', 'cursive';
+    font-size: 10vw;
+    color: white;
+    text-shadow: 1px 1px 4px red;
 }
+
+h2 {
+    font-family: 'Pacifico', 'cursive';
+    text-align: center;
+    margin-top: -10vw;
+    font-size: 3vw;
+    font-weight: 400;
+  }
+
+header {
+    background-image: url(chris.jpg);
+    background-size: cover;
+    height: 10vw;
+    border: solid white 0.5rem;
+    margin-bottom: 20vw;
+  }
+
+  header img {
+    width: 80%;
+    display: block;
+    margin: -2vw auto 0;
+  }
+  
 body {
     font-family: Helvetica, Arial, sans-serif;
     background-color: bisque;
     margin: auto;
-    width: 50%;
+    /* width: 50%; */
     border: 3px solid green;
     padding: 10px;
 }

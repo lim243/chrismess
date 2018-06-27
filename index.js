@@ -59,11 +59,9 @@ class App{
         fav.addEventListener('click', (this.favButton))
 
         item.appendChild(fav)
-        // flick.addEventListener('click',this.deleteButton)
 
         item.appendChild(button)
     
-
         return item
     }
 
