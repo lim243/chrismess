@@ -16,8 +16,11 @@ class App{
     }
 
     deleteButton(ev){
-        let item = ev.target.parentNode;
+        const item = ev.target.parentNode
         item.parentNode.removeChild(item)
+        const count = ev.target.id
+        flicksArray.splice(count,1,0)
+        console.log(flicksArray)
     }
 
     renderArray(name, year){
@@ -40,10 +43,11 @@ class App{
         })
 
         const button = document.createElement('button')
-        
+        button.setAttribute('id',flicksArray.length)
         button.textContent = 'delete'
-        
         button.addEventListener('click', this.deleteButton)
+
+
 
         item.appendChild(button)
 
