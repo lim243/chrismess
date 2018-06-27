@@ -1,5 +1,3 @@
-const flicksArray = []
-
 class App{
     constructor(){
         const form = document.querySelector('form#flickForm')
@@ -15,6 +13,11 @@ class App{
         span.classList.add(name)
         span.textContent = value
         return span
+    }
+
+    deleteButton(ev){
+        let item = ev.target.parentNode;
+        item.parentNode.removeChild(item)
     }
 
     renderArray(name, year){
@@ -34,32 +37,40 @@ class App{
             //creates a span
             const span = this.renderSpan(propertyName, flick[propertyName])
             item.appendChild(span)
-            // const itemArr = this.renderArray(flick[propertyName],)
         })
+
+        const button = document.createElement('button')
+        
+        button.textContent = 'delete'
+        
+        button.addEventListener('click', this.deleteButton)
+
+        item.appendChild(button)
+
         return item
     }
 
-    // renderArray()
-
     handleSubmit(ev) {
         const f = ev.target
-
-        //flick Object
+        
         const flick = {
             name: f.flickName.value,
             year: ` (${f.flickYear.value})`,
         }
         const item = this.renderItem(flick)
-    
+
         const list = document.querySelector('#flicks')
-    
-        list.appendChild(item)
 
         this.renderArray(flick.name, flick.year)
-        // console.log(flicksArray)
+
+        list.appendChild(item)
+
     
         f.reset()
     }
 }
 
+
+
+const flicksArray = []
 const app = new App()
