@@ -27,6 +27,12 @@ class App{
         flicksArray.push(`${name}: ${year}`)
     }
 
+    favButton(ev){
+        const item = ev.target.parentNode;
+        item.classList.add('favourite');
+
+    }
+
     renderItem(flick){
         //creates a item list
         const item = document.createElement('li')
@@ -47,9 +53,16 @@ class App{
         button.textContent = 'delete'
         button.addEventListener('click', this.deleteButton)
 
+        const fav = document.createElement('button')
+        fav.setAttribute('id',flicksArray.length)
+        fav.textContent = '=)'
+        fav.addEventListener('click', (this.favButton))
 
+        item.appendChild(fav)
+        // flick.addEventListener('click',this.deleteButton)
 
         item.appendChild(button)
+    
 
         return item
     }

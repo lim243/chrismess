@@ -14,12 +14,16 @@ body {
 
 ul { display:table; margin:0 auto;}
 
-.flickName {
+.name {
     font-family: 'Shrikhand';
     font-stretch: extra-condensed;
 }
 
-.flickYear {
+.year {
     font-family: 'Raleway';
+}
+
+.favourite {
+    color: brown;
 }
 
