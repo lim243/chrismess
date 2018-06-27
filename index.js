@@ -1,5 +1,7 @@
 const form = document.querySelector('form#flickForm')
 
+
+
 const addFlickToList = function(ev) {
     ev.preventDefault()
     const f = ev.target
@@ -7,13 +9,12 @@ const addFlickToList = function(ev) {
     if(f.flickName.value == '' || f.flickYear.value == ''){
         alert('Please Do Not Leave Input Field Empty!')
     } else {
-        const item = document.createElement('li')
-
-        const flickSpan = renderProperty('name', f.flickName.value)
-        const yearSpan = renderProperty('year', f.flickYear.value)
-        
-        item.appendChild(flickSpan)
-        item.appendChild(yearSpan)
+        // const item = document.createElement('li')
+        const flick = {
+            name: f.flickName.value,
+            year: f.flickYear.value,
+        }
+        const item = renderItem(flick)
 
         const list = document.querySelector('#flicks')
 
@@ -22,12 +23,16 @@ const addFlickToList = function(ev) {
     f.reset()
 }
 
+
 const renderItem = function(flick){
+    //creates a item list
     const item = document.createElement('li')
     item.classList.add('flick')
 
+    //gets the key for the object
     const properties = Object.keys(flick);
 
+    //loops through the whole object and append it to item list
     properties.forEach(function propertyName() {
         const span = renderProperty(propertyName, flick[propertyName])
         item.appendChild(span);
