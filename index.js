@@ -1,25 +1,31 @@
-const form = document.querySelector('form#flickForm')
+
+const app = class App{
+    constructor(){
+        const form = document.querySelector('form#flickForm')
+        form.addEventListener('submit', addFlickToList)
+        
+    }
+}
 
 
 
-const addFlickToList = function(ev) {
+
+
+const handleSubmit = function(ev) {
     ev.preventDefault()
     const f = ev.target
 
-    if(f.flickName.value == '' || f.flickYear.value == ''){
-        alert('Please Do Not Leave Input Field Empty!')
-    } else {
-        // const item = document.createElement('li')
-        const flick = {
-            name: f.flickName.value,
-            year: f.flickYear.value,
-        }
-        const item = renderItem(flick)
-
-        const list = document.querySelector('#flicks')
-
-        list.appendChild(item)
+    const flick = {
+        name: f.flickName.value,
+        year: f.flickYear.value,
     }
+
+    const item = renderItem(flick)
+
+    const list = document.querySelector('#flicks')
+
+    list.appendChild(item)
+
     f.reset()
 }
 
@@ -37,7 +43,7 @@ const renderItem = function(flick){
         const span = renderProperty(propertyName, flick[propertyName])
         item.appendChild(span);
     })
-    
+
     return item
 }
 
@@ -48,5 +54,3 @@ const renderProperty = function(name, value){
     span.textContent = value
     return span
 }
-
-form.addEventListener('submit', addFlickToList)
