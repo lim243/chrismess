@@ -9,14 +9,31 @@ const addFlickToList = function(ev) {
     } else {
         const item = document.createElement('li')
 
-        addFlickNameToItemList(f,item)
-        addFlickYearToItemList(f,item);
+        const flickSpan = renderProperty('name', f.flickName.value)
+        const yearSpan = renderProperty('year', f.flickYear.value)
+        
+        item.appendChild(flickSpan)
+        item.appendChild(yearSpan)
 
         const list = document.querySelector('#flicks')
 
         list.appendChild(item)
     }
     f.reset()
+}
+
+const renderItem = function(flick){
+    const item = document.createElement('li')
+    item.classList.add('flick')
+
+    const properties = Object.keys(flick);
+
+    properties.forEach(function propertyName() {
+        const span = renderProperty(propertyName, flick[propertyName])
+        item.appendChild(span);
+    })
+    
+    return item
 }
 
 //create a span
@@ -27,22 +44,4 @@ const renderProperty = function(name, value){
     return span
 }
 
-function addFlickYearToItemList(f,item){
-    const flickYear = f.flickYear.value;
-    let sFlickYear = document.createElement('span')
-    sFlickYear.setAttribute('class', 'flickYear')
-    sFlickYear.textContent = flickYear
-    item.appendChild(sFlickYear)
-}
-
-function addFlickNameToItemList(f,item){
-    const flickName = f.flickName.value;
-    let sFlickName = document.createElement('span')
-    sFlickName.setAttribute('class', 'flickName')
-    sFlickName.textContent = flickName + ' '
-    item.appendChild(sFlickName)
-}
-
 form.addEventListener('submit', addFlickToList)
-
-//REMARKS: document.querySelector() if id then use '#' if class then use '.'
