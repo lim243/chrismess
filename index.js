@@ -1,5 +1,6 @@
 class App{
     constructor(){
+        this.flicksArray = []
         const form = document.querySelector('form#flickForm')
         form.addEventListener('submit', (ev) => {
             ev.preventDefault();
@@ -20,17 +21,15 @@ class App{
         item.parentNode.removeChild(item)
         const count = ev.target.id
         flicksArray.splice(count,1,0)
-        console.log(flicksArray)
     }
 
-    renderArray(name, year){
-        flicksArray.push(`${name}: ${year}`)
-    }
+    // renderArray(name, year){
+    //     flicksArray.push(`${name}: ${year}`)
+    // }
 
     favButton(ev){
         const item = ev.target.parentNode;
         item.classList.add('favourite');
-
     }
 
     renderItem(flick){
@@ -48,11 +47,13 @@ class App{
             item.appendChild(span)
         })
 
+        //add delete button
         const button = document.createElement('button')
         button.setAttribute('id',flicksArray.length)
         button.textContent = 'delete'
         button.addEventListener('click', this.deleteButton)
 
+        //add favourite button
         const fav = document.createElement('button')
         fav.setAttribute('id',flicksArray.length)
         fav.textContent = '=)'
@@ -71,12 +72,15 @@ class App{
         const flick = {
             name: f.flickName.value,
             year: ` (${f.flickYear.value})`,
+            favourite = false,
         }
+        this.flicksArray.push(flick)
+
         const item = this.renderItem(flick)
 
         const list = document.querySelector('#flicks')
 
-        this.renderArray(flick.name, flick.year)
+        // this.renderArray(flick.name, flick.year)
 
         list.appendChild(item)
 
@@ -86,7 +90,4 @@ class App{
     }
 }
 
-
-
-const flicksArray = []
 const app = new App()
