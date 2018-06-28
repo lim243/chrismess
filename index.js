@@ -20,7 +20,7 @@ class App{
 
     load() {
          // load flicks from localStorage
-        const flicksArray = JSON.parse(localStorage.getItem('flicks'))
+        const flicksArray = JSON.parse(localStorage.getItem('flicksArray'))
         if(flicksArray){
             //add each flick to the UI
             flicksArray.forEach(flick => this.addFlick(flick))
