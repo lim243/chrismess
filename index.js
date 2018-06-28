@@ -82,6 +82,7 @@ class App{
 
     
         f.reset()
+        f.flickName.focus();
     }
 }
 
