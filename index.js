@@ -37,10 +37,6 @@ class App{
         this.list.removeChild(item)
     }
 
-    // renderArray(name, year){
-    //     flicksArray.push(`${name}: ${year}`)
-    // }
-
     favButton(ev){
         const item = ev.target.parentNode;
         item.classList.add('favourite');
@@ -62,20 +58,19 @@ class App{
         })
 
         //add delete button
-        const button = document.createElement('button')
-        button.setAttribute('id',this.flicksArray.length)
-        button.textContent = 'delete'
-        button.addEventListener('click', (_ev) => this.removeFlick(item))
+        const deleteButton = document.createElement('button')
+        deleteButton.setAttribute('id',this.flicksArray.length)
+        deleteButton.textContent = 'delete'
+        deleteButton.addEventListener('click', (_ev) => this.removeFlick(item))
 
         //add favourite button
         const fav = document.createElement('button')
-        // fav.setAttribute('id',this.flicksArray.length)
         fav.textContent = '=)'
         fav.addEventListener('click', (this.favButton))
 
         item.appendChild(fav)
 
-        item.appendChild(button)
+        item.appendChild(deleteButton)
     
         return item
     }
