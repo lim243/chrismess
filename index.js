@@ -1,7 +1,11 @@
 class App{
     constructor(){
-        this.flicksArray = []
+        
         this.list = document.querySelector('#flicks')
+        
+        this.flicksArray = []
+        this.load()
+
         const form = document.querySelector('form#flickForm')
         form.addEventListener('submit', (ev) => {
             ev.preventDefault();
@@ -10,12 +14,31 @@ class App{
     }
 
     save() {
+        //store flicksArray in localStorage
         localStorage.setItem('flicksArray',JSON.stringify(this.flicksArray))
     }
 
     load() {
+         // load flicks from localStorage
         const flicksArray = JSON.parse(localStorage.getItem('flicks'))
-        this.flicksArray = flicksArray
+        if(flicksArray){
+            //add each flick to the UI
+            flicksArray.forEach(flick => this.addFlick(flick))
+        }
+    }
+
+    addFlick(flick){
+        this.flicksArray.push(flick)
+        
+        const item = this.renderItem(flick)
+
+        //mark as fav
+        if(flick.favourite){
+            item.classList.add('fav')
+        }
+
+        //add to DOM
+        this.list.appendChild(item)
     }
 
     //create a span
@@ -26,6 +49,23 @@ class App{
         return span
     }
 
+    renderSpans(flick, item) {
+        const div = document.createElement('div')
+        div.classList.add('info')
+    
+        // get the list of properties
+        const properties = Object.keys(flick)
+    
+        // loop over the properties
+        properties.forEach((propertyName) => {
+          // build a span, and append it to the div
+          const span = this.renderSpan(propertyName, flick[propertyName])
+          div.appendChild(span)
+        })
+    
+        return div
+      }
+
     removeFlick(flick,item){
         //remove from UI
         this.list.removeChild(item)
@@ -33,11 +73,15 @@ class App{
         //remove from array
         const index = this.flicksArray.indexOf(flick)
         this.flicksArray.splice(index, 1)
+
+        //update localStorage
+        this.save()
     }
 
     toggleFavourite(flick, item){
         //update both UI and the array
         flick.favourite = item.classList.toggle('fav')
+        this.save()
     }
 
     renderItem(flick){
@@ -46,14 +90,8 @@ class App{
         item.classList.add('flick')
     
         //gets the key for the object
-        const properties = Object.keys(flick);
-    
-        //loops through the whole object and append it to item list
-        properties.forEach( (propertyName) => {
-            //creates a span
-            const span = this.renderSpan(propertyName, flick[propertyName])
-            item.appendChild(span)
-        })
+        const properties = this.renderSpans(flick, item)
+        item.appendChild(properties)
 
         //add action buttons
         const actions = this.renderActionButtons(flick,item)
@@ -86,6 +124,8 @@ class App{
         return actions
     }
 
+    
+
     handleSubmit(ev) {
         const f = ev.target
         
@@ -94,11 +134,8 @@ class App{
             year: f.flickYear.value,
             favourite : false,
         }
-        this.flicksArray.push(flick)
-
-        const item = this.renderItem(flick)
-
-        this.list.appendChild(item)
+        this.addFlick(flick)
+        this.save()
 
         f.reset()
         f.flickName.focus();
