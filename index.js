@@ -33,8 +33,13 @@ class App{
     //     flicksArray.splice(count,1,0)
     // }
 
-    removeFlick(item){
+    removeFlick(flick,item){
+        //remove from UI
         this.list.removeChild(item)
+
+        //remove from array
+        const index = this.flicksArray.indexOf(flick)
+        this.flicksArray.splice(index, 1)
     }
 
     favButton(ev){
@@ -61,7 +66,7 @@ class App{
         const deleteButton = document.createElement('button')
         deleteButton.setAttribute('id',this.flicksArray.length)
         deleteButton.textContent = 'delete'
-        deleteButton.addEventListener('click', (_ev) => this.removeFlick(item))
+        deleteButton.addEventListener('click', (_ev) => this.removeFlick(flick, item))
 
         //add favourite button
         const fav = document.createElement('button')
