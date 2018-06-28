@@ -43,7 +43,7 @@ body {
     padding: 10px;
 }
 
-ul { display:table; margin:0 auto;}
+/* ul { display:table; margin:0 auto;} */
 
 .name {
     font-family: 'Shrikhand';
@@ -57,4 +57,44 @@ ul { display:table; margin:0 auto;}
 .fav {
     background-color: brown;
 }
+
+ul#flicks {
+    list-style: none;
+    margin: 1rem;
+    padding: 0;
+    border: 1px solid #eee;
+  }
+  .flick {
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+.favouriteButton {
+    background-color: brown;
+}
+
+.favourite {
+    display: none;
+}
+
+button[type="submit"]:hover {
+    background-color: #44bb33;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+  }
+
+  .actions button {
+    border: 0;
+    padding: 0.75rem 0.8rem;
+    transition: background-color .25s ease-out, transform .1s ease-out;
+    cursor: pointer;
+  }
+
+  .flick:nth-of-type(odd) {
+    background-color: #f6f6f6;
+  }
+  .flick.fav {
+    background-color: #ffff66;
+  }
 
