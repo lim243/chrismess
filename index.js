@@ -55,22 +55,35 @@ class App{
             item.appendChild(span)
         })
 
+        //add action buttons
+        const actions = this.renderActionButtons(flick,item)
+        item.appendChild(actions)
+    
+        return item
+    }
+
+    renderActionButtons(flick, item) {
+        //to separate buttons with divs
+        const actions = document.createElement('div')
+        actions.classList.add('actions')
+
         //add delete button
         const deleteButton = document.createElement('button')
-        deleteButton.setAttribute('id',this.flicksArray.length)
+        deleteButton.classList.add('remove')
         deleteButton.textContent = 'delete'
         deleteButton.addEventListener('click', (_ev) => this.removeFlick(flick, item))
 
+        actions.appendChild(deleteButton)
+
         //add favourite button
         const favouriteButton = document.createElement('button')
+        favouriteButton.classList.add('fav')
         favouriteButton.textContent = '=)'
         favouriteButton.addEventListener('click', (_ev) => (this.toggleFavourite(flick,item)))
 
-        item.appendChild(favouriteButton)
+        actions.appendChild(favouriteButton)
 
-        item.appendChild(deleteButton)
-    
-        return item
+        return actions
     }
 
     handleSubmit(ev) {
