@@ -1,6 +1,7 @@
 class App{
     constructor(){
         this.flicksArray = []
+        const list = document.querySelector('#flicks')
         const form = document.querySelector('form#flickForm')
         form.addEventListener('submit', (ev) => {
             ev.preventDefault();
@@ -16,11 +17,15 @@ class App{
         return span
     }
 
-    deleteButton(ev){
-        const item = ev.target.parentNode
-        item.parentNode.removeChild(item)
-        const count = ev.target.id
-        flicksArray.splice(count,1,0)
+    // deleteButton(ev){
+    //     const item = ev.target.parentNode
+    //     item.parentNode.removeChild(item)
+    //     const count = ev.target.id
+    //     flicksArray.splice(count,1,0)
+    // }
+
+    removeFlick(item){
+        this.list.removeChild(item)
     }
 
     // renderArray(name, year){
@@ -51,7 +56,7 @@ class App{
         const button = document.createElement('button')
         button.setAttribute('id',flicksArray.length)
         button.textContent = 'delete'
-        button.addEventListener('click', this.deleteButton)
+        button.addEventListener('click', (_ev) => this.removeFlick(item))
 
         //add favourite button
         const fav = document.createElement('button')
@@ -78,11 +83,8 @@ class App{
 
         const item = this.renderItem(flick)
 
-        const list = document.querySelector('#flicks')
 
-        // this.renderArray(flick.name, flick.year)
-
-        list.appendChild(item)
+        this.list.appendChild(item)
 
     
         f.reset()
