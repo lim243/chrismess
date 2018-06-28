@@ -26,13 +26,6 @@ class App{
         return span
     }
 
-    // deleteButton(ev){
-    //     const item = ev.target.parentNode
-    //     item.parentNode.removeChild(item)
-    //     const count = ev.target.id
-    //     flicksArray.splice(count,1,0)
-    // }
-
     removeFlick(flick,item){
         //remove from UI
         this.list.removeChild(item)
@@ -42,9 +35,8 @@ class App{
         this.flicksArray.splice(index, 1)
     }
 
-    favButton(ev){
-        const item = ev.target.parentNode;
-        item.classList.add('favourite');
+    toggleFavourite(flick){
+        flick.favourite = !flick.favourite
     }
 
     renderItem(flick){
@@ -69,11 +61,11 @@ class App{
         deleteButton.addEventListener('click', (_ev) => this.removeFlick(flick, item))
 
         //add favourite button
-        const fav = document.createElement('button')
-        fav.textContent = '=)'
-        fav.addEventListener('click', (this.favButton))
+        const favouriteButton = document.createElement('button')
+        favouriteButton.textContent = '=)'
+        favouriteButton.addEventListener('click', (_ev) => (this.toggleFavourite(flick)))
 
-        item.appendChild(fav)
+        item.appendChild(favouriteButton)
 
         item.appendChild(deleteButton)
     
