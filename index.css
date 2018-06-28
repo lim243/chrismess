@@ -46,15 +46,19 @@ body {
     font-family: 'Raleway';
 }
 
-.fav {
+/* .fav {
     background-color: brown;
-}
+} */
 
 ul#flicks {
     list-style: none;
     margin: 1rem;
     padding: 0;
     border: 1px solid #eee;
+}
+
+.remove {
+    background-color: rgb(196, 88, 88);
 }
 
 .flick {
@@ -65,7 +69,7 @@ ul#flicks {
 }
 
 .favouriteButton {
-    background-color: brown;
+    background-color: rgb(255, 174, 0);
 }
 
 .favourite {
@@ -75,10 +79,11 @@ ul#flicks {
 button[type="submit"]:hover {
     background-color: #44bb33;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+    cursor: pointer;
 }
 
 li.flick:hover {
-    background-color: #44bb33;
+    background-color: #a4b8c0;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
     transform: scale(1.01)
 }
