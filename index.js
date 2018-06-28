@@ -1,12 +1,21 @@
 class App{
     constructor(){
         this.flicksArray = []
-        const list = document.querySelector('#flicks')
+        this.list = document.querySelector('#flicks')
         const form = document.querySelector('form#flickForm')
         form.addEventListener('submit', (ev) => {
             ev.preventDefault();
             this.handleSubmit(ev)
         })
+    }
+
+    save() {
+        localStorage.setItem('flicksArray',JSON.stringify(this.flicksArray))
+    }
+
+    load() {
+        const flicksArray = JSON.parse(localStorage.getItem('flicks'))
+        this.flicksArray = flicksArray
     }
 
     //create a span
@@ -54,13 +63,13 @@ class App{
 
         //add delete button
         const button = document.createElement('button')
-        button.setAttribute('id',flicksArray.length)
+        button.setAttribute('id',this.flicksArray.length)
         button.textContent = 'delete'
         button.addEventListener('click', (_ev) => this.removeFlick(item))
 
         //add favourite button
         const fav = document.createElement('button')
-        fav.setAttribute('id',flicksArray.length)
+        // fav.setAttribute('id',this.flicksArray.length)
         fav.textContent = '=)'
         fav.addEventListener('click', (this.favButton))
 
@@ -76,17 +85,15 @@ class App{
         
         const flick = {
             name: f.flickName.value,
-            year: ` (${f.flickYear.value})`,
-            favourite = false,
+            year: f.flickYear.value,
+            favourite : false,
         }
         this.flicksArray.push(flick)
 
         const item = this.renderItem(flick)
 
-
         this.list.appendChild(item)
 
-    
         f.reset()
         f.flickName.focus();
     }
