@@ -108,15 +108,15 @@ class App{
         //add delete button
         const deleteButton = document.createElement('button')
         deleteButton.classList.add('remove')
-        deleteButton.textContent = 'delete'
+        deleteButton.innerHTML = '<i class="fas fa-trash"></i>'
         deleteButton.addEventListener('click', (_ev) => this.removeFlick(flick, item))
 
         actions.appendChild(deleteButton)
 
         //add favourite button
         const favouriteButton = document.createElement('button')
-        favouriteButton.classList.add('fav')
-        favouriteButton.textContent = '=)'
+        favouriteButton.classList.add('favouriteButton')
+        favouriteButton.innerHTML = '<i class="far fa-smile-wink"></i>'
         favouriteButton.addEventListener('click', (_ev) => (this.toggleFavourite(flick,item)))
 
         actions.appendChild(favouriteButton)
@@ -130,7 +130,7 @@ class App{
         const f = ev.target
         
         const flick = {
-            name: f.flickName.value,
+            name: f.flickName.value + ' ',
             year: f.flickYear.value,
             favourite : false,
         }
