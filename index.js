@@ -35,8 +35,9 @@ class App{
         this.flicksArray.splice(index, 1)
     }
 
-    toggleFavourite(flick){
-        flick.favourite = !flick.favourite
+    toggleFavourite(flick, item){
+        //update both UI and the array
+        flick.favourite = item.classList.toggle('fav')
     }
 
     renderItem(flick){
@@ -63,7 +64,7 @@ class App{
         //add favourite button
         const favouriteButton = document.createElement('button')
         favouriteButton.textContent = '=)'
-        favouriteButton.addEventListener('click', (_ev) => (this.toggleFavourite(flick)))
+        favouriteButton.addEventListener('click', (_ev) => (this.toggleFavourite(flick,item)))
 
         item.appendChild(favouriteButton)
 
